@@ -1,0 +1,33 @@
+{
+  "name": "safetitanic",
+  "version": "1.0.0",
+  "description": "A safe way to visit the titanic",
+  "main": "index.js",
+  "scripts": {
+    "watch": "npx vite",
+    "build": "npx parcel index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/range-et/safeTitanic.git"
+  },
+  "keywords": [
+    "rms",
+    "titanic",
+    "threejs"
+  ],
+  "author": "Indrajeet",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/range-et/safeTitanic/issues"
+  },
+  "homepage": "https://github.com/range-et/safeTitanic#readme",
+  "dependencies": {
+    "howler": "^2.2.3",
+    "three": "^0.154.0"
+  },
+  "devDependencies": {
+    "parcel": "^2.9.3",
+    "vite": "^4.3.9"
+  }
+}

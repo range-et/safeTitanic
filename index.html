@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Safe Titanic</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        body {
+            margin: 0;
+            padding-left: 48px;
+            padding-right: 50px;
+            padding-right: 50px;
+            background-color: #0a0908;
+        }
+
+
+        #navbar {
+            width: 100%;
+            display: flex;
+            min-height: 25px;
+            padding: 10px;
+            flex-direction: row;
+        }
+
+        #lightbar {
+            height: 20px;
+            width: 20px;
+            border-radius: 10px;
+            border-style: solid;
+            border-color: whitesmoke;
+            border-width: 1px;
+        }
+
+        #drawing {
+            border-radius: 10px;
+            cursor: crosshair;
+            border-color: #212529;
+            border-style: solid;
+            border-width: 2px;
+        }
+
+        .masking-tape {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #ffff99;
+            /* Light yellow to mimic the color of masking tape */
+            color: black;
+            /* Text color */
+            font-family: 'Courier New', Courier, monospace;
+            /* Monospace font to resemble handwriting */
+            text-transform: uppercase;
+            /* Capital letters often look more like handwriting */
+            letter-spacing: 1px;
+            /* Spacing between letters for more 'handwritten' feel */
+            border: 1px dashed #666;
+            /* Dashed border to mimic the edges of a piece of tape */
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+            /* Slight rotation to make it look stuck on */
+            white-space: nowrap;
+            /* Prevents the text from wrapping to the next line */
+        }
+
+        .navmarker {
+            width: 80%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navbar">
+        <div class="navmarker">
+            <div id="lightbar"></div>
+            <span class="masking-tape" style="transform: rotate(-1deg);">← Space to control the sub</span>
+            <span class="masking-tape" style="transform: rotate(1deg);">W,S,A,D to move around</span>
+            <span class="masking-tape" style="transform: rotate(-1deg);">Mouse to look around</span>
+            <span class="masking-tape" style="transform: rotate(-1deg);"><a
+                    href="https://www.nytimes.com/2023/06/20/us/oceangate-titanic-missing-submersible.html">More</a></span>
+        </div>
+    </div>
+
+    <div><canvas id="drawing"></canvas></div>
+    <script defer type="module" src="/index.js"></script>
+</body>
+
+</html>

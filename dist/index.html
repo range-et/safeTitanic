@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Safe Titanic</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.7155ca86.ico">
+    <style>body {
+  background-color: #0a0908;
+  margin: 0;
+  padding-left: 48px;
+  padding-right: 50px;
+}
+
+#navbar {
+  flex-direction: row;
+  width: 100%;
+  min-height: 25px;
+  padding: 10px;
+  display: flex;
+}
+
+#lightbar {
+  border: 1px solid #f5f5f5;
+  border-radius: 10px;
+  width: 20px;
+  height: 20px;
+}
+
+#drawing {
+  cursor: crosshair;
+  border: 2px solid #212529;
+  border-radius: 10px;
+}
+
+.masking-tape {
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  background-color: #ff9;
+  border: 1px dashed #666;
+  padding: 5px 10px;
+  font-family: Courier New, Courier, monospace;
+  display: inline-block;
+  box-shadow: 1px 1px 3px #0000001a;
+}
+
+.navmarker {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  display: flex;
+}
+
+</style>
+</head>
+
+<body>
+    <div id="navbar">
+        <div class="navmarker">
+            <div id="lightbar"></div>
+            <span class="masking-tape" style="transform: rotate(-1deg)">← Space to control the sub</span>
+            <span class="masking-tape" style="transform: rotate(1deg)">W,S,A,D to move around</span>
+            <span class="masking-tape" style="transform: rotate(-1deg)">Mouse to look around</span>
+            <span class="masking-tape" style="transform: rotate(-1deg)"><a href="https://www.nytimes.com/2023/06/20/us/oceangate-titanic-missing-submersible.html">More</a></span>
+        </div>
+    </div>
+
+    <div><canvas id="drawing"></canvas></div>
+    <script defer="" src="/index.3d214d75.js"></script>
+</body>
+
+</html>
