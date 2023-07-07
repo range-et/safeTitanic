@@ -8,6 +8,10 @@
     <style>body {
   background-color: #0a0908;
   margin: 0;
+}
+
+.main {
+  margin: 0;
   padding-left: 48px;
   padding-right: 50px;
 }
@@ -34,7 +38,7 @@
 }
 
 .masking-tape {
-  color: #000;
+  color: #212529;
   text-transform: uppercase;
   letter-spacing: 1px;
   white-space: nowrap;
@@ -42,6 +46,7 @@
   border: 1px dashed #666;
   padding: 5px 10px;
   font-family: Courier New, Courier, monospace;
+  font-weight: 900;
   display: inline-block;
   box-shadow: 1px 1px 3px #0000001a;
 }
@@ -54,22 +59,100 @@
   display: flex;
 }
 
+#overlay {
+  z-index: 20;
+  opacity: .8;
+  background-color: #212529;
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal {
+  text-align: center;
+  width: 30vw;
+}
+
+.add-space {
+  margin-bottom: 10px;
+}
+
+#startButton, #startButton2 {
+  background-color: #666;
+  border: 3px groove red;
+  border-radius: 4ch;
+  width: 40px;
+  height: 40px;
+  margin: 50px auto;
+}
+
+#startButton:hover, #startButton2:hover {
+  cursor: pointer;
+  border-color: #7fffd4;
+}
+
+#aboutBtn {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 </style>
 </head>
 
 <body>
-    <div id="navbar">
-        <div class="navmarker">
-            <div id="lightbar"></div>
-            <span class="masking-tape" style="transform: rotate(-1deg)">← Space to control the sub</span>
-            <span class="masking-tape" style="transform: rotate(1deg)">W,S,A,D to move around</span>
-            <span class="masking-tape" style="transform: rotate(-1deg)">Mouse to look around</span>
-            <span class="masking-tape" style="transform: rotate(-1deg)"><a href="https://www.nytimes.com/2023/06/20/us/oceangate-titanic-missing-submersible.html">More</a></span>
+
+    <div id="overlay">
+        <div id="instruction" class="modal center">
+            <span class="masking-tape add-space" style="transform: rotate(-1deg)">Explore the titaninc safely!</span>
+            <span class="masking-tape add-space" style="transform: rotate(-1deg)">Hold space to control the sub</span>
+            <span class="masking-tape add-space" style="transform: rotate(1deg)">W,S,A,D to move around</span>
+            <span class="masking-tape add-space" style="transform: rotate(-2deg)">Mouse to look around</span>
+            <span class="masking-tape add-space" style="transform: rotate(2deg)">Press the one singular button to
+                start</span>
+            <div id="startButton"></div>
+        </div>
+
+        <div id="about" class="modal center">
+            <span class="masking-tape add-space" style="transform: rotate(-1deg)">Explore the titaninc safely!</span>
+            <span class="masking-tape add-space" style="transform: rotate(-2deg)"><a href="https://www.nytimes.com/live/2023/06/22/us/titanic-missing-submarine" target="_blank">Oceangate submersible</a></span>
+            <span class="masking-tape add-space" style="transform: rotate(-2deg)"><a href="https://www.cnn.com/2023/06/24/business/extreme-travel-cost/index.html" target="_blank">Read
+                    more on extreme tourism</a></span>
+            <span class="masking-tape add-space" style="transform: rotate(-1deg)"><a href="https://www.economist.com/international/2021/01/30/why-do-some-people-risk-their-lives-for-fun" target="_blank">Why would you do it?</a></span>
+                    
+            <span class="masking-tape add-space" style="transform: rotate(2deg)">Press the one singular button to
+                resume</span>
+            <div id="startButton2"></div>
+            <span class="masking-tape add-space" style="transform: rotate(-2deg)">By : <a href="https://www.indrajeethaldar.com/" target="_blank">Indrajeet Haldar</a></span>
         </div>
     </div>
 
-    <div><canvas id="drawing"></canvas></div>
-    <script defer="" src="/index.3d214d75.js"></script>
+    <div class="main">
+        <div id="navbar">
+            <div class="navmarker">
+                <div id="lightbar"></div>
+                <span class="masking-tape" style="transform: rotate(-1deg)">← Space to control the sub</span>
+                <span class="masking-tape" style="transform: rotate(1deg)">W,S,A,D to move around</span>
+                <span class="masking-tape" style="transform: rotate(-1deg)">Mouse to look around</span>
+                <span class="masking-tape" style="transform: rotate(2deg)">F11 for fullscreen</span>
+                <span id="aboutBtn" class="masking-tape" style="transform: rotate(-1deg)">About</span>
+            </div>
+        </div>
+
+        <div><canvas id="drawing"></canvas></div>
+        <script>document.getElementById("about").style.display = "none";
+
+</script>
+        <script defer="" src="/index.3d214d75.js"></script>
+    </div>
 </body>
 
 </html>
