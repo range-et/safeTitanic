@@ -67,7 +67,7 @@ function init() {
 
     // set the position of the camera
     const randPoint = ((Math.random() - 0.5) * (Math.PI / 4) + (Math.PI * -0.25));
-    const multiplier = 150;
+    const multiplier = 200;
     const xpos = Math.sin(randPoint) * multiplier;
     const zpos = Math.cos(randPoint) * multiplier;
     const ypos = 50;
@@ -81,7 +81,7 @@ function init() {
 
     // add the render passes to the thing
     const renderPass = new RenderPass(scene, camera);
-    const pixelPass = new RenderPixelatedPass(1.5, scene, camera);
+    const pixelPass = new RenderPixelatedPass(2, scene, camera);
     const glitchPass = new GlitchPass(10);
     const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.5, 0.4, 0.85);
     bloomPass.threshold = params.threshold;
@@ -90,7 +90,7 @@ function init() {
     const outputPass = new OutputPass(THREE.ReinhardToneMapping);
 
     composer.addPass(renderPass);
-    // composer.addPass(pixelPass);
+    composer.addPass(pixelPass);
     composer.addPass(bloomPass);
     composer.addPass(glitchPass);
     composer.addPass(outputPass);
