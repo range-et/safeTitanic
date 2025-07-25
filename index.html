@@ -2,6 +2,16 @@
 <html lang="en">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2K1R558C5S"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-2K1R558C5S');
+    </script>
+
     <meta charset="utf-8">
     <title>Safe Titanic</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -102,7 +112,8 @@
             margin-bottom: 10px;
         }
 
-        #startButton, #startButton2 {
+        #startButton,
+        #startButton2 {
             height: 40px;
             width: 40px;
             border-radius: 4ch;
@@ -115,7 +126,8 @@
             margin-bottom: 50px;
         }
 
-        #startButton:hover , #startButton2:hover {
+        #startButton:hover,
+        #startButton2:hover {
             border-color: aquamarine;
             cursor: pointer;
         }
@@ -126,16 +138,6 @@
         }
     </style>
 </head>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2K1R558C5S"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-2K1R558C5S');
-</script>
 
 <body>
 
@@ -153,14 +155,15 @@
         <div id="about" class="modal center">
             <span class="masking-tape add-space" style="transform: rotate(-1deg);">Explore the titaninc safely!</span>
             <span class="masking-tape add-space" style="transform: rotate(-2deg);"><a
-                href="https://www.nytimes.com/live/2023/06/22/us/titanic-missing-submarine" target="_blank">Oceangate submersible</a></span>
+                    href="https://www.nytimes.com/live/2023/06/22/us/titanic-missing-submarine"
+                    target="_blank">Oceangate submersible</a></span>
             <span class="masking-tape add-space" style="transform: rotate(-2deg);"><a
                     href="https://www.cnn.com/2023/06/24/business/extreme-travel-cost/index.html" target="_blank">Read
                     more on extreme tourism</a></span>
             <span class="masking-tape add-space" style="transform: rotate(-1deg);"><a
                     href="https://www.economist.com/international/2021/01/30/why-do-some-people-risk-their-lives-for-fun"
                     target="_blank">Why would you do it?</a></span>
-                    
+
             <span class="masking-tape add-space" style="transform: rotate(2deg);">Press the one singular button to
                 resume</span>
             <div id="startButton2"></div>
