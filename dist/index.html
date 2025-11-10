@@ -1,8 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en"><head>
 
-<head>
-    <meta charset="utf-8">
+    <!-- Google tag (gtag.js) -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-D5RD8NG81L"></script>
+    <script>window.dataLayer = window.dataLayer || [];
+function gtag() {
+    dataLayer.push(arguments);
+}
+gtag('js', new Date());
+gtag('config', 'G-D5RD8NG81L');
+
+</script>
+
     <title>Safe Titanic</title>
     <link rel="icon" type="image/x-icon" href="/favicon.7155ca86.ico">
     <style>body {
@@ -40,21 +48,23 @@
 .masking-tape {
   color: #212529;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: clamp(.5px, .1vw, 1px);
   white-space: nowrap;
   background-color: #ff9;
   border: 1px dashed #666;
-  padding: 5px 10px;
+  padding: clamp(3px, .5vw, 5px) clamp(6px, 1.2vw, 10px);
   font-family: Courier New, Courier, monospace;
+  font-size: clamp(10px, 1.2vw, 14px);
   font-weight: 900;
   display: inline-block;
   box-shadow: 1px 1px 3px #0000001a;
 }
 
 .navmarker {
-  flex-direction: row;
+  flex-flow: wrap;
   justify-content: space-between;
   align-items: center;
+  gap: clamp(5px, 1vw, 10px);
   width: 80%;
   display: flex;
 }
@@ -79,11 +89,13 @@
 
 .modal {
   text-align: center;
-  width: 30vw;
+  width: clamp(280px, 30vw, 500px);
+  max-width: 90vw;
 }
 
 .add-space {
-  margin-bottom: 10px;
+  margin-bottom: clamp(8px, 1.5vh, 10px);
+  display: block;
 }
 
 #startButton, #startButton2 {
@@ -105,6 +117,45 @@
   text-decoration: underline;
 }
 
+@media (width <= 768px) {
+  .navmarker {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .masking-tape {
+    white-space: normal;
+    font-size: clamp(9px, 2vw, 12px);
+  }
+
+  .main {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  #navbar {
+    padding: 5px;
+  }
+}
+
+@media (width <= 480px) {
+  .modal {
+    width: 95vw;
+    padding: 10px;
+  }
+
+  .masking-tape {
+    padding: clamp(2px, .8vw, 4px) clamp(4px, 1.5vw, 8px);
+    font-size: clamp(8px, 2.5vw, 11px);
+  }
+
+  #startButton, #startButton2 {
+    width: 35px;
+    height: 35px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+}
 </style>
 </head>
 
@@ -127,7 +178,7 @@
             <span class="masking-tape add-space" style="transform: rotate(-2deg)"><a href="https://www.cnn.com/2023/06/24/business/extreme-travel-cost/index.html" target="_blank">Read
                     more on extreme tourism</a></span>
             <span class="masking-tape add-space" style="transform: rotate(-1deg)"><a href="https://www.economist.com/international/2021/01/30/why-do-some-people-risk-their-lives-for-fun" target="_blank">Why would you do it?</a></span>
-                    
+
             <span class="masking-tape add-space" style="transform: rotate(2deg)">Press the one singular button to
                 resume</span>
             <div id="startButton2"></div>
@@ -139,7 +190,7 @@
         <div id="navbar">
             <div class="navmarker">
                 <div id="lightbar"></div>
-                <span class="masking-tape" style="transform: rotate(-1deg)">← Space to control the sub</span>
+                <span class="masking-tape" style="transform: rotate(-1deg)">Space to control the sub</span>
                 <span class="masking-tape" style="transform: rotate(1deg)">W,S,A,D to move around</span>
                 <span class="masking-tape" style="transform: rotate(-1deg)">Mouse to look around</span>
                 <span class="masking-tape" style="transform: rotate(2deg)">F11 for fullscreen</span>
@@ -151,8 +202,8 @@
         <script>document.getElementById("about").style.display = "none";
 
 </script>
-        <script defer="" src="/index.3d214d75.js"></script>
+        <script defer="" type="module" src="/safeTitanic.e02fbd41.js"></script>
     </div>
-</body>
 
-</html>
+
+</body></html>

@@ -2,7 +2,6 @@
   "name": "safetitanic",
   "version": "1.0.0",
   "description": "A safe way to visit the titanic",
-  "main": "index.js",
   "scripts": {
     "watch": "npx vite",
     "build": "npx parcel index.html"
