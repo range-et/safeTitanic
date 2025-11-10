@@ -4,13 +4,13 @@
 <head>
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2K1R558C5S"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D5RD8NG81L"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
 
-        gtag('config', 'G-2K1R558C5S');
+        gtag('config', 'G-D5RD8NG81L');
     </script>
 
     <title>Safe Titanic</title>
@@ -56,7 +56,7 @@
 
         .masking-tape {
             display: inline-block;
-            padding: 5px 10px;
+            padding: clamp(3px, 0.5vw, 5px) clamp(6px, 1.2vw, 10px);
             background-color: #ffff99;
             /* Light yellow to mimic the color of masking tape */
             color: #212529;
@@ -65,7 +65,7 @@
             /* Monospace font to resemble handwriting */
             text-transform: uppercase;
             /* Capital letters often look more like handwriting */
-            letter-spacing: 1px;
+            letter-spacing: clamp(0.5px, 0.1vw, 1px);
             /* Spacing between letters for more 'handwritten' feel */
             border: 1px dashed #666;
             /* Dashed border to mimic the edges of a piece of tape */
@@ -74,6 +74,7 @@
             white-space: nowrap;
             /* Prevents the text from wrapping to the next line */
             font-weight: 900;
+            font-size: clamp(10px, 1.2vw, 14px);
         }
 
         .navmarker {
@@ -82,6 +83,8 @@
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
+            flex-wrap: wrap;
+            gap: clamp(5px, 1vw, 10px);
         }
 
         #overlay {
@@ -104,12 +107,14 @@
         }
 
         .modal {
-            width: 30vw;
+            width: clamp(280px, 30vw, 500px);
+            max-width: 90vw;
             text-align: center;
         }
 
         .add-space {
-            margin-bottom: 10px;
+            margin-bottom: clamp(8px, 1.5vh, 10px);
+            display: block;
         }
 
         #startButton,
@@ -135,6 +140,48 @@
         #aboutBtn {
             text-decoration: underline;
             cursor: pointer;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .navmarker {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .masking-tape {
+                white-space: normal;
+                font-size: clamp(9px, 2vw, 12px);
+            }
+
+            .main {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            #navbar {
+                padding: 5px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .modal {
+                width: 95vw;
+                padding: 10px;
+            }
+
+            .masking-tape {
+                font-size: clamp(8px, 2.5vw, 11px);
+                padding: clamp(2px, 0.8vw, 4px) clamp(4px, 1.5vw, 8px);
+            }
+
+            #startButton,
+            #startButton2 {
+                height: 35px;
+                width: 35px;
+                margin-top: 30px;
+                margin-bottom: 30px;
+            }
         }
     </style>
 </head>
@@ -176,7 +223,7 @@
         <div id="navbar">
             <div class="navmarker">
                 <div id="lightbar"></div>
-                <span class="masking-tape" style="transform: rotate(-1deg);">← Space to control the sub</span>
+                <span class="masking-tape" style="transform: rotate(-1deg);">Space to control the sub</span>
                 <span class="masking-tape" style="transform: rotate(1deg);">W,S,A,D to move around</span>
                 <span class="masking-tape" style="transform: rotate(-1deg);">Mouse to look around</span>
                 <span class="masking-tape" style="transform: rotate(2deg);">F11 for fullscreen</span>

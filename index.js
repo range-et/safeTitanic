@@ -7,6 +7,7 @@ import { GlitchPass } from './ThreeAddons/NewGlitchPass.js'
 import { RenderPixelatedPass } from './ThreeAddons/RenderPixelatedPass.js';
 import { UnrealBloomPass } from './ThreeAddons/UnrealBloomPass.js';
 import { OutputPass } from './ThreeAddons/OutputPass.js';
+import { ShaderPass } from './ThreeAddons/ShaderPass.js';
 import { Howl, Howler } from 'howler';
 
 let camera, controls, scene, renderer, composer;
@@ -82,6 +83,10 @@ function init() {
     // add the render passes to the thing
     const renderPass = new RenderPass(scene, camera);
     const pixelPass = new RenderPixelatedPass(2, scene, camera);
+    
+    // Create fake AO pass
+    const aoPass = createAOPass(scene, camera);
+    
     const glitchPass = new GlitchPass(10);
     const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.5, 0.4, 0.85);
     bloomPass.threshold = params.threshold;
@@ -91,6 +96,7 @@ function init() {
 
     composer.addPass(renderPass);
     composer.addPass(pixelPass);
+    composer.addPass(aoPass);
     composer.addPass(bloomPass);
     composer.addPass(glitchPass);
     composer.addPass(outputPass);
@@ -140,6 +146,70 @@ function init() {
     });
 }
 
+function createAOPass(scene, camera) {
+    // Simple screen-space AO that darkens areas based on local depth variations
+    const aoShader = {
+        uniforms: {
+            tDiffuse: { value: null },
+            resolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
+            aoIntensity: { value: 0.4 },
+            aoRadius: { value: 2.0 }
+        },
+        vertexShader: `
+            varying vec2 vUv;
+            void main() {
+                vUv = uv;
+                gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+            }
+        `,
+        fragmentShader: `
+            uniform sampler2D tDiffuse;
+            uniform vec2 resolution;
+            uniform float aoIntensity;
+            uniform float aoRadius;
+            varying vec2 vUv;
+            
+            void main() {
+                vec4 color = texture2D(tDiffuse, vUv);
+                
+                // Simple screen-space darkening based on local color variation
+                // This simulates AO by darkening areas with high contrast (edges/crevices)
+                vec2 texelSize = aoRadius / resolution;
+                float ao = 0.0;
+                
+                // Sample surrounding pixels
+                float samples = 0.0;
+                for (float x = -1.0; x <= 1.0; x += 1.0) {
+                    for (float y = -1.0; y <= 1.0; y += 1.0) {
+                        vec2 offset = vec2(x, y) * texelSize;
+                        vec3 sampleColor = texture2D(tDiffuse, vUv + offset).rgb;
+                        
+                        // Calculate luminance difference
+                        float sampleLum = dot(sampleColor, vec3(0.299, 0.587, 0.114));
+                        float centerLum = dot(color.rgb, vec3(0.299, 0.587, 0.114));
+                        
+                        // If surrounding is darker, add to AO
+                        if (sampleLum < centerLum) {
+                            ao += (centerLum - sampleLum);
+                        }
+                        samples += 1.0;
+                    }
+                }
+                
+                ao = ao / samples;
+                ao = smoothstep(0.0, 0.3, ao); // Normalize and make subtle
+                
+                // Darken based on AO
+                color.rgb *= (1.0 - ao * aoIntensity);
+                
+                gl_FragColor = color;
+            }
+        `
+    };
+    
+    return new ShaderPass(aoShader);
+}
+
 function onWindowResize() {
 
     SCREEN_HEIGHT = window.innerHeight - (MARGIN * 2);
@@ -172,6 +242,7 @@ document.addEventListener('keyup', (event) => {
 
 function animate() {
     requestAnimationFrame(animate);
+    
     renderer.render(scene, camera);
     distToShip = Math.pow(camera.position.x, 2) + Math.pow(camera.position.y, 2) + Math.pow(camera.position.z, 2);
     if (distToShip <= 25000000 && camera.position.y > 1 && manuverable == true) {
@@ -182,6 +253,7 @@ function animate() {
         manuveringLight.style.backgroundColor = "Red"
     }
     controls.update(clock.getDelta());
+    
     // effects and things
     composer.render();
     // spotLight.lookAt(0, 0, 0);

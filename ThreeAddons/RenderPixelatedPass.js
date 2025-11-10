@@ -220,7 +220,9 @@ class RenderPixelatedPass extends Pass {
 					if (normalEdgeStrength > 0.0)
 						nei = normalEdgeIndicator(depth, normal);
 
-					float Strength = dei > 0.0 ? (1.0 - depthEdgeStrength * dei) : (1.0 + normalEdgeStrength * nei);
+					// Darken edges instead of brightening them
+					float edgeDarkness = max(dei * depthEdgeStrength, nei * normalEdgeStrength);
+					float Strength = 1.0 - edgeDarkness * 0.3; // Darken edges by 30%
 
 					gl_FragColor = texel * Strength;
 
