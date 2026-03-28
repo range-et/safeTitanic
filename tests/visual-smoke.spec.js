@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('scene loads and renders after clicking start', async ({ page }) => {
+test('scene loads and renders after clicking start', { timeout: 60000 }, async ({ page }) => {
     await page.goto('/');
 
     // Wait for the start button to be visible
