@@ -1,0 +1,12 @@
+# Mirrored into Assemblage/_Projects/safeTitanic/
+include = [
+    "README.md",
+]
+exclude = [
+    "CLAUDE.md",
+    "node_modules/**",
+    "dist/**",
+    "tests/**",
+    "ThreeAddons/**",
+    "assets/**",
+]
