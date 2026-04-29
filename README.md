@@ -1,6 +1,15 @@
+---
+tags: [project, safe-titanic, readme, threejs, webgl, surface, communications]
+status: shipped
+domain: communications
+repo: https://github.com/range-et/safeTitanic
+---
+
 # Safe Titanic
 
 An interactive 3D underwater experience that lets you explore the Titanic wreck from the safety of your browser. Built with Three.js.
+
+> **Why it exists.** The 2023 Titan submersible implosion was the prompt — *why is the substitute experience not already free*? Safe Titanic is one answer: a public artifact that says "you don't need to risk your life for this." It belongs in the *Communications & Surfaces* cluster alongside [[../portfolio/README|portfolio]] and [[../shenanigans/README|shenanigans]] — the work expressing itself in public — and is paired with a writeup on the [shenanigans blog](https://www.shenanigans.blog/shenan/?shenan=safetitanic). Same WebGL stance as [[../PGL/README|PGL]] but for narrative scenes rather than abstract graphs.
 
 **[Explore the Titanic](https://range-et.github.io/safeTitanic/)**
 
@@ -61,3 +70,7 @@ npm test
 ## License
 
 MIT
+
+---
+
+*Related: [shenanigans](../shenanigans/README.md) (the writeup blog post lives here) · [portfolio](../portfolio/README.md) (sibling surface) · [PGL](../PGL/README.md) (WebGL cousin) · [Threads/Visualization at scale](../../Threads/Visualization%20at%20scale.md) · [MOC](../../MOC.md)*
