@@ -1,10 +1,3 @@
----
-tags: [project, safe-titanic, readme, threejs, webgl, surface, communications]
-status: shipped
-domain: communications
-repo: https://github.com/range-et/safeTitanic
----
-
 # Safe Titanic
 
 An interactive 3D underwater experience that lets you explore the Titanic wreck from the safety of your browser. Built with Three.js.
